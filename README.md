@@ -2,6 +2,10 @@
 <br>
 <br>
 Last update: 2023/12/10<br>
+The project is working again, thanks to @pdf83 support.
+Sungrow has changed some behavior in the firmare and the main script has been updated. 
+<br>
+2023/12/10<br>
 <br>
 After updating my SG5.0RS to the firmware version SUNSTONE-S_B000.V001.P029-20231019.zip the inverter is lo longer requesting the address 356+8 registers (164H, Active power of phase A,B,C and Total active power). In addition, the meter is not detected on the web yet.<br>
 But we have a new player: fe03500000018105. Register 5000H? What is that?<br>
@@ -9,10 +13,10 @@ The script cheater.sh has been updated to answer 0, but no request for active po
 Do you know the solution? Please let me know on "issues". Thanks in advance.<br>
 <br>
 # Sungrow-Meter-cheater
-Sungrow S100 power meter emulation using a Raspberry Pi
+Sungrow DTSU666 power meter emulation using a Raspberry Pi
 
 #### Project objectives
-This is a research project that aims to emulate a Sungrow Meter S100
+This is a research project that aims to emulate a Sungrow Meter DTSU666
 
 #### Main references
 cheater.sh<br>
@@ -57,22 +61,16 @@ calc_crc16.sh
 
 3. Reboot and run "screen -r" to check if the communication is working:
 ```
-answer=FE0310000000D80000000000000000000000D8E0DA (216 W)
-answering to fe03016400081020
-answer=FE0310000000D80000000000000000000000D8E0DA (216 W)
-answering to fe03016400081020
-answer=FE0310000000D80000000000000000000000D8E0DA (216 W)
-answering to fe03016400081020
-answer=FE0310000000D80000000000000000000000D8E0DA (216 W)
-unknown request fffe030164000810
-answering to fe03016400081020
-answer=FE0310000000DA0000000000000000000000DA6659 (218 W)
-answering to fe03016400081020
-answer=FE0310000000DB0000000000000000000000DBA518 (219 W)
-unknown request fffe030164000810
-answering to fe03016400081020
-answer=FE0310000000DB0000000000000000000000DBA518 (219 W)
-answering to fe03016400081020
+request: fe03003f0001a009: slave 254 ($FE), register 63 ($3F), 1 register | answer: address=254 ($FE), baud rate=1 (9600 bps) FE0302FE012DF0
+request: fe03500000018105: slave 254 ($FE), register 20480 ($5000), 1 register | answer: device type coding=0x20D5 FE030220D5740F
+request: fe03016400081020: slave 254 ($FE),register 356 ($0164), 8 registers, Active power of phases A,B,C and Total active power | answer: (A,Total=-615 W, B,C=0 W) FE0310FFFFFD990000000000000000FFFFFD99DED2
+request: fe0300770001201f: slave 254 ($FE), register 119 ($77), 1 register, Frequency | answer: 50 Hz, FE030200322D85
+request: fe03000a000c71c2, register 10 ($0A), 12 registers, Current forward active total/spike/peak/flat/valley/... electric energy | answer: (0,0,0,0,0,0) FE03180000000000000000000000000000000000000000000000006F1F
+request: fe03003f0001a009: slave 254 ($FE), register 63 ($3F), 1 register | answer: address=254 ($FE), baud rate=1 (9600 bps) FE0302FE012DF0
+request: 207300000001c370: slave $20, register 0 ($00), 1 register | answer: 207300000001c370
+request: 20030000000d82be: slave 32 ($20), register 0 ($00), 13 registers | answer: 20031A0000000100000001000000010000000100000001000000010006767
+request: 20030000000d82be: slave 32 ($20), register 0 ($00), 13 registers | answer: 20031A0000000100000001000000010000000100000001000000010006767
+request: 20030000000d82be: slave 32 ($20), register 0 ($00), 13 registers | answer: 20031A0000000100000001000000010000000100000001000000010006767
 ...
 ```
 
