@@ -6,11 +6,13 @@ The project is working again, thanks to @pdf83 support.
 Sungrow has changed some behavior in the firmare and the main script has been updated. 
 <br>
 <br>
+<del>
 2023/12/10<br>
 After updating my SG5.0RS to the firmware version SUNSTONE-S_B000.V001.P029-20231019.zip the inverter is lo longer requesting the address 356+8 registers (164H, Active power of phase A,B,C and Total active power). In addition, the meter is not detected on the web yet.<br>
 But we have a new player: fe03500000018105. Register 5000H? What is that?<br>
 The script cheater.sh has been updated to answer 0, but no request for active power is received yet.<br>
 Do you know the solution? Please let me know on "issues". Thanks in advance.<br>
+</del>
 <br>
 # Sungrow-Meter-cheater
 Sungrow DTSU666 power meter emulation using a Raspberry Pi
