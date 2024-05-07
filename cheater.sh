@@ -6,14 +6,14 @@
 shopt -s lastpipe
 
 #--------------------------------------------------------------------------------
-function Shelly_get_em0 () {
+function Shelly_get_em0_power () {
 
-./Shelly_get_em0.sh | read power
+./Shelly_get_em0_power.sh | read value
 
 # debugging
-#echo $power
+#echo $value
 
-command='LC_NUMERIC=C printf "%.0f" $power'
+command='LC_NUMERIC=C printf "%.0f" $value'
 power=$(eval $command)
 
 # debugging
@@ -27,6 +27,22 @@ fi
 
 }
 #--------------------------------------------------------------------------------
+function Shelly_get_em0_voltage () {
+
+./Shelly_get_em0_voltage.sh | read value
+
+# debugging
+#echo $value
+
+command='LC_NUMERIC=C printf "%.0f" $value'
+voltage=$(eval $command)
+
+# debugging
+#echo "voltage="$voltage
+
+}
+#--------------------------------------------------------------------------------
+
 
 sleep 10
 device="/dev/ttyUSB0"
@@ -88,7 +104,7 @@ do
 #      echo "$answer" | xxd -r -p > $device
 #continue
 
-      Shelly_get_em0
+      Shelly_get_em0_power
 
       # debugging
       #echo "power="$power
@@ -123,13 +139,26 @@ do
       ;;
 
     $R97_3_61H)
-      answer="FE030600E600000000"
+      #answer="FE030600E600000000"
+      #./calc_crc16.sh $answer | read CRC
+      #answer=$answer$CRC
+      #echo "request: $request: slave 254 (\$FE), register 97 (\$61), 3 registers, Voltage of A, B, C phase | answer: (230 V,0,0) $answer"
+      #echo "$answer" | xxd -r -p > $device
+      #;;
+
+      Shelly_get_em0_voltage
+
+      # debugging
+      #echo "voltage="$voltage
+
+      hex=$(printf "%04X" $voltage)
+      answer="FE0306"$hex"00000000"
       ./calc_crc16.sh $answer | read CRC
       answer=$answer$CRC
-      echo "request: $request: slave 254 (\$FE), register 97 (\$61), 3 registers, Voltage of A, B, C phase | answer: (230 V,0,0) $answer"
+
+      echo "request: $request: slave 254 (\$FE), register 97 (\$61), 3 registers, Voltage of A, B, C phase | answer: ($voltage V,0,0) $answer"
       echo "$answer" | xxd -r -p > $device
       ;;
-
     $R119_1_77H)
       answer="FE03020032"
       ./calc_crc16.sh $answer | read CRC
