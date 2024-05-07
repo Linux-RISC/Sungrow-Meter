@@ -139,13 +139,6 @@ do
       ;;
 
     $R97_3_61H)
-      #answer="FE030600E600000000"
-      #./calc_crc16.sh $answer | read CRC
-      #answer=$answer$CRC
-      #echo "request: $request: slave 254 (\$FE), register 97 (\$61), 3 registers, Voltage of A, B, C phase | answer: (230 V,0,0) $answer"
-      #echo "$answer" | xxd -r -p > $device
-      #;;
-
       Shelly_get_em0_voltage
 
       # debugging
