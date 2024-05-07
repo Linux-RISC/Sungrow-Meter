@@ -152,6 +152,7 @@ do
       echo "request: $request: slave 254 (\$FE), register 97 (\$61), 3 registers, Voltage of A, B, C phase | answer: ($voltage V,0,0) $answer"
       echo "$answer" | xxd -r -p > $device
       ;;
+
     $R119_1_77H)
       answer="FE03020032"
       ./calc_crc16.sh $answer | read CRC
@@ -167,6 +168,7 @@ do
       echo "request: $request: slave 254 (\$FE), register 20480 (\$5000), 1 register | answer: device type coding=0x20D5 $answer"
       echo "$answer" | xxd -r -p > $device
       ;;
+
     $unknown_1)
       answer=$unknown_1
       #./calc_crc16.sh $answer | read CRC
@@ -174,6 +176,7 @@ do
       echo "request: $request: slave \$20, register 0 (\$00), 1 register | answer: $answer"
       echo "$answer" | xxd -r -p > $device
       ;;
+
     $R0_13_00H)
       # the inverter get stuck requesting this request if this answer is used
       #answer="20031A0000000000000000000000000000000000000000000000000000"
@@ -184,8 +187,10 @@ do
       echo "request: $request: slave 32 (\$20), register 0 (\$00), 13 registers | answer: $answer"
       echo "$answer" | xxd -r -p > $device
       ;;
+
     *)
       echo "unknown request $request"
       ;;
+
   esac
 done
