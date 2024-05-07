@@ -3,7 +3,7 @@
 <br>
 Last update: 2023/12/10<br>
 The project is working again, thanks to @pdf83 support.
-Sungrow has changed some behavior in the firmare and the main script has been updated. 
+Sungrow has changed some behavior in the firmare and the main script needed to be updated. 
 <br>
 <br>
 <del>
