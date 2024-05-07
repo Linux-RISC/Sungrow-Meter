@@ -43,7 +43,7 @@ function calc_crc16() {
   # Note, this number has low and high bytes swapped, so use it accordingly (or swap bytes)
   #printf "CRC16=0x%X\n" $crc
   #printf "%X" $crc
-  hex=$(printf "%X" $crc)
+  hex=$(printf "%04X" $crc)
   H_byte=${hex:2:2}
   L_byte=${hex:0:2}
   echo $H_byte$L_byte
