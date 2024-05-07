@@ -1,7 +1,7 @@
 <a href="https://www.buymeacoffee.com/rbpiuserf" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 <br>
 <br>
-Last update: 2023/12/10<br>
+Last update: 2024/05/07<br>
 The project is working again, thanks to @pdf83 support.
 Sungrow has changed some behavior in the firmare and the main script needed to be updated. 
 <br>
@@ -46,7 +46,8 @@ Connect two wires from COM2 terminals (A2,B2) to 485 adapter terminals (D+,D-). 
 1. Copy these files to /home/pi/cheater
 ```
 cheater.sh
-Shelly_get_em0.sh
+Shelly_get_em0_power.sh
+Shelly_get_em0_voltage.sh
 calc_crc16.sh
 ```
 
