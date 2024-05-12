@@ -169,16 +169,16 @@ do
       echo "$answer" | xxd -r -p > $device
       ;;
 
-    $unknown_1)
+    #$unknown_1)
       #answer=$unknown_1
       #./calc_crc16.sh $answer | read CRC
       #answer=$answer$CRC
       #echo "request: $request: slave \$20, register 0 (\$00), 1 register | answer: $answer"
-      echo "request: $request: slave \$20, register 0 (\$00), 1 register | NO answer"
+      #echo "request: $request: slave \$20, register 0 (\$00), 1 register | NO answer"
       #echo "$answer" | xxd -r -p > $device
-      ;;
+      #;;
 
-    $R0_13_00H)
+    #$R0_13_00H)
       # the inverter get stuck requesting this request if this answer is used
       #answer="20031A0000000000000000000000000000000000000000000000000000"
       #answer="20031A000000010000000100000001000000010000000100000001000"
@@ -186,9 +186,9 @@ do
       #./calc_crc16.sh $answer | read CRC
       #answer=$answer$CRC
       #echo "request: $request: slave 32 (\$20), register 0 (\$00), 13 registers | answer: $answer"
-      echo "request: $request: slave 32 (\$20), register 0 (\$00), 13 registers | NO answer"
+      #echo "request: $request: slave 32 (\$20), register 0 (\$00), 13 registers | NO answer"
       #echo "$answer" | xxd -r -p > $device
-      ;;
+      #;;
 
     *)
       echo "unknown request $request"
